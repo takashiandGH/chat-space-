@@ -6,14 +6,14 @@ chat-space
 
 |name|type|null|index|
 |:--:|:--:|:--:|:--:|
-|name|string|false||
+|name|string|false|true|
 |email|string|false||
 |password|string|false||
 
 ###groups
 |name|type|null|index|
 |:--:|:--:|:--:|:--:|
-|name|string|false||
+|name|string|false|true|
 
 ###messages
 |name|type|null|index|foreign_key|
