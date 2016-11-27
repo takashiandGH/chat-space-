@@ -25,7 +25,7 @@ chat-space
 
 ###groups_users
 |name|type|null|index|foreign_key|
-|:--:|:--:|:--:|:--:|||
+|:--:|:--:|:--:|:--:|:--:|
 |group_id|reference|false|true|true|
 |user_id|reference|false|true|true|
 
