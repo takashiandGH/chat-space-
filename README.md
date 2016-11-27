@@ -4,39 +4,42 @@ chat-space
 
 ###users
 
-|name|type|null|
-|:--:|:--:|:--:|
-|name|string|false|
-|email|string|false|
-|password|string|false|
+|name|type|null|index|
+|:--:|:--:|:--:|:--:|
+|name|string|false||
+|email|string|false||
+|password|string|false||
 
 ###groups
-|name|type|null|
-|:--:|:--:|:--:|
-|name|string|false|
+|name|type|null|index|
+|:--:|:--:|:--:|:--:|
+|name|string|false||
 
 ###messages
-|name|type|null|
-|:--:|:--:|:--:|
-|body|text||
-|image|string||
-|group_id|integer|false|
-|user_id|integer|false|
+|name|type|null|index|foreign_key|
+|:--:|:--:|:--:|:--:|:--:|
+|body|text||||
+|image|string||||
+|group_id|refarence|false|true|true|
+|user_id|refarence|false|true|true|
 
-###group_users
-|name|type|null|
-|:--:|:--:|:--:|
-|group_id|integer|false|
-|user_id|integer|false|
+###groups_users
+|name|type|null|index|foreign_key|
+|:--:|:--:|:--:|:--:|||
+|group_id|reference|false|true|true|
+|user_id|reference|false|true|true|
+
 
 ##アソシエーション
 ###users
 * has_many groups :through, group_users
 * has_many messages
+* has_many :group_users
 
 ###groups
 * has_many users :through, group_users
 * has_many messages
+* has_many :group_users
 
 ### messages
 * belongs_to user
@@ -45,23 +48,3 @@ chat-space
 ###group_users
 * belongs_to user
 * belongs_to group
-
-
-## Description
-
-## Demo
-
-## VS.
-
-## Requirement
-
-## Usage
-
-## Install
-
-## Contribution
-
-## Licence
-
-
-## 北條孝
