@@ -1,0 +1,22 @@
+@mixin clearfix() {
+  &:after {
+  content: '';
+  display: block;
+  clear: both;
+  }
+
+  .chat-user {
+    float: left;
+    &__actions {
+    float: right;
+    }
+  }
+
+  .chat-main {
+    float: left;
+  }
+
+  .chat-body {
+    float: left;
+  }
+}
