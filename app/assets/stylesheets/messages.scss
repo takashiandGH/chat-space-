@@ -1,3 +1,244 @@
-// Place all the styles related to the messages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.chat-notification {
+  min-width: 100%;
+  height: 30px;
+  color: $mainwhite;
+  background-color: $whiteblue;
+  text-align: center;
+  padding: 2px 0;
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+
+.whole-layout {
+  flex: 1;
+}
+
+.chat-side {
+  float: left;
+  width: 300px;
+  height: 776px;
+  background-color: #2f3e51;
+}
+
+.chat-user {
+  @include clearfix ();
+  padding: 20px;
+  color: $mainwhite;
+  background-color: #253141;
+
+  &__actions {
+    float: right;
+  }
+  &__action {
+    display: inline-block;
+    margin: 15px 0 15px 3px;
+    line-height: 28px;
+    color: $mainwhite;
+    font-size: 20px;
+  }
+}
+
+h5 {
+  float: left;
+  line-height: 60px;
+  letter-spacing: 2px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.fa.fa-pencil-square-o,
+.fa.fa-cog {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.chat-groups {
+  margin: 0;
+  padding: 0;
+  color: $mainwhite;
+  list-style: none;
+}
+
+.chat-group {
+  display: list-item;
+  text-align: -webkit-match-parent;
+  height: 100px;
+
+  &__link {
+    display: block;
+    padding: 20px 20px;
+    color: $mainwhite;
+    text-decoration: none;
+  }
+
+  &__name {
+    font-size: 15px;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+
+  &__message {
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+  }
+}
+
+.chat-main {
+  float: left;
+  position: relative;
+  width: calc(100% - 300px);
+  height: 776px;
+}
+
+.chat-header {
+  @include clearfix ();
+  padding-right: 40px;
+  padding-left: 40px;
+  background-color: $mainwhite;
+  border-bottom: 1px solid #eee;
+
+  &--left {
+    float: left;
+  }
+
+  &__users {
+    font-size: 12px;
+    color: #999999;
+    display: block;
+  }
+
+  &__user {
+    margin-left: 3px;
+  }
+
+  &--right {
+    float: right;
+  }
+
+  &__edit-btn {
+    display: inline-block;
+    margin: 28px 0;
+    padding-right: 20px;
+    padding-left: 20px;
+    line-height: 40px;
+    color: $whiteblue;
+    font-size: 14px;
+    border: 2px solid;
+  }
+}
+
+h2 {
+  margin-top: 20px;
+  line-height: 50px;
+  letter-spacing: 2px;
+  color: #333;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.chat-body {
+  position: relative;
+  padding: 30px 0;
+  height: calc(100% - 190px);
+  padding-left: 40px;
+  background-color: #fafafa;
+}
+
+.chat-messages {
+  position: absolute;
+  padding: 0;
+  list-style: none;
+}
+
+.chat-message {
+  margin-bottom: 40px;
+
+  &__header {
+    @include clearfix ();
+    line-height: 20px;
+  }
+
+  &__name {
+    float: left;
+    font-size: 16px;
+    color: $gray;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  &__time {
+    float: left;
+    margin-left: 10px;
+    color: #999999;
+    font-size: 12px;
+  }
+
+  &__body {
+    font-size: 14px;
+    color: $gray;
+    text-align: left;
+  }
+}
+
+.chat-footer {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: 20px 40px;
+  background-color: #ddd;
+
+  &__body {
+    float: left;
+    width: calc(100% - 115px);
+    height: 50px;
+    position: relative;
+  }
+
+  &__file {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  width: 40px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  }
+}
+
+textarea {
+  width: 100%;
+  font-size: 16px;
+  color: $gray;
+  height: 20px;
+  padding: 15px 10px;
+  border: none;
+  resize: none;
+  display: block;
+  margin: auto 0;
+}
+
+input {
+  float: left;
+  display: inline-block;
+  width: 100px;
+  margin-left: 15px;
+  line-height: 50px;
+  color: $mainwhite;
+  background-color: #39aef0;
+  text-align: center;
+  border: none;
+  padding: 0;
+}
+
+.fa-image {
+color: black;
+}
