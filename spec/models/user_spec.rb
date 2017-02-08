@@ -4,6 +4,8 @@ require 'rails_helper'
 
         let(:user) { FactoryGirl.build(:user) }
 
+        # user = build(:user) なぜか動かないので無視！！
+
         it "is valid with a name, email, password, password_confirmation" do
           expect(user).to be_valid
         end
