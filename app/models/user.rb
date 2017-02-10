@@ -4,4 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :name, presence: true
+
+  #association
+  has_many :group_user
+  has_many :groups, through: :group_user
+  has_many :messages
+
 end
