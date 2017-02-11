@@ -3,14 +3,18 @@
   %p.chat-notification チャットグループが作成されました。
 
   .whole-layout
-    .chat-side
-      .chat-user.clearfix
-        %h5 takashihojo
-        .chat-user__actions
-          %a.chat-user__action
-            %i.fa.fa-pencil-square-o
-          %a.chat-user__action
-            %i.fa.fa-cog
+    = render 'groups/username'
+    / .chat-side
+    /   .chat-user.clearfix
+    /     %h5 takashihojo
+    /     .chat-user__actions
+    /       %a.chat-user__action
+    /       = link_to new_group_path  do
+    /         %i.fa.fa-pencil-square-o
+    /       %a.chat-user__action
+    /       = link_to edit_user_registration_path(current_user)  do
+    /         %i.fa.fa-cog
+    .chat-group
       %ul.chat-groups
         %li.chat-group
           %a.chat-group__link
@@ -33,6 +37,7 @@
         %ul.chat-message
           %li.chat-message
           / =@message.body
+        = render @messages
         .chat-message__header.clearfix
           %p.chat-message__name takashihojo
           %p.chat-message__time 2006/03/02 06:11:28
@@ -45,8 +50,7 @@
       .chat-footer
         .chat-footer__body
         =form_for [@group, @message] do |f|
-          =f.label :aaa
           = f.text_area :body, placeholder: 'type a message'
           = f.label :image, class: 'chat-footer__file' do
             %i.fa.fa-image
-          = f.submit 'Send'
+          = f.submit :Send, class: "chat-group-form__action-btn"
