@@ -1,22 +1,22 @@
 class MessagesController < ApplicationController
   def index
-  @group = Group.find(params[:group_id])
-  @groups = current_user.groups
-  @message = Message.new
-  @messages = @group.messages
+    @group = Group.find(params[:group_id])
+    @groups = current_user.groups
+    @message = Message.new
+    @messages = @group.messages
   end
 
   def new
   end
 
   def create
-  @message = current_user.messages.new(message_params)
-    if @message.save
-      flash[:notice] = "メッセージを送信しました"
-    else
-      flash[:alert] = "メッセージを送信できませんでした"
-    end
-    redirect_to group_messages_path
+    @message = current_user.messages.new(message_params)
+      if @message.save
+        flash[:notice] = "メッセージを送信しました"
+      else
+        flash[:alert] = "メッセージを送信できませんでした"
+      end
+      redirect_to group_messages_path
   end
 
 
