@@ -1,0 +1,23 @@
+.chat-side
+  .chat-user.clearfix
+    =current_user.name
+    .chat-user__actions
+      %a.chat-user__action
+      = link_to new_group_path  do
+        %i.fa.fa-pencil-square-o
+      %a.chat-user__action
+      = link_to edit_user_registration_path(current_user)  do
+        %i.fa.fa-cog
+      / = groups.each do |g|
+      /   = g.name
+      = render groups
+    / .chat-group
+    /   %ul.chat-groups
+    /     %li.chat-group
+    /       %a.chat-group__link
+    /         %p.chat-group__name さむい
+    /         %p.chat-group__message a
+    /     %li.chat-group
+    /       %a.chat-group__link
+    /         %p.chat-group__name test
+    /         %p.chat-group__message さむい
