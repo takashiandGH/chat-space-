@@ -4,32 +4,15 @@
 
   .whole-layout
     = render 'groups/sidebar', groups: @groups
-    / .chat-side
-    /   .chat-user.clearfix
-    /     %h5 takashihojo
-    /     .chat-user__actions
-    /       %a.chat-user__action
-    /       = link_to new_group_path  do
-    /         %i.fa.fa-pencil-square-o
-    /       %a.chat-user__action
-    /       = link_to edit_user_registration_path(current_user)  do
-    /         %i.fa.fa-cog
-    .chat-group
-      %ul.chat-groups
-        %li.chat-group
-          %a.chat-group__link
-            %p.chat-group__name さむい
-            %p.chat-group__message a
-        %li.chat-group
-          %a.chat-group__link
-            %p.chat-group__name test
-            %p.chat-group__message さむい
     .chat-main
       .chat-header.clearfix
         .chat-header--left
-          %h2 test
+          %h2
+            = @group.name
           %p.chat-header__users
             Members:
+            - @group.users.each do |user|
+              = user.name
             %span.chat-heaeder__user takashihojo
         .chat-header--right
           %a.chat-header__edit-btn Edit

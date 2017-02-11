@@ -1,8 +1,6 @@
-%ul.chat-groups
-  %li.chat-group
-    %a.chat-group__link
-      %p.chat-group__name
+%ul.chat-message
+      %p.chat-message__name
       = message.user.name
       = message.created_at
-      %p.chat-group__message
+      %p.chat-message__body
       = message.body
