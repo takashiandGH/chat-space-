@@ -3,48 +3,37 @@
   %p.chat-notification チャットグループが作成されました。
 
   .whole-layout
-    .chat-side
-      .chat-user.clearfix
-        %h5 takashihojo
-        .chat-user__actions
-          %a.chat-user__action
-            %i.fa.fa-pencil-square-o
-          %a.chat-user__action
-            %i.fa.fa-cog
-      %ul.chat-groups
-        %li.chat-group
-          %a.chat-group__link
-            %p.chat-group__name さむい
-            %p.chat-group__message a
-        %li.chat-group
-          %a.chat-group__link
-            %p.chat-group__name test
-            %p.chat-group__message さむい
+    = render 'groups/sidebar', groups: @groups
     .chat-main
       .chat-header.clearfix
         .chat-header--left
-          %h2 test
+          %h2
+            = @group.name
           %p.chat-header__users
             Members:
+            - @group.users.each do |user|
+              = user.name
             %span.chat-heaeder__user takashihojo
         .chat-header--right
           %a.chat-header__edit-btn Edit
       .chat-body
         %ul.chat-message
           %li.chat-message
-            .chat-message__header.clearfix
-              %p.chat-message__name takashihojo
-              %p.chat-message__time 2006/03/02 06:11:28
-            %p.chat-message__body test
+          / =@message.body
+        = render @messages
+        .chat-message__header.clearfix
+          %p.chat-message__name takashihojo
+          %p.chat-message__time 2006/03/02 06:11:28
+          %p.chat-message__body わっほい
           %li.chat-message
-            .chat-message__header.clearfix
-              %p.chat-message__name takashihojo
-              %p.chat-message__time 2018/03/02 15:11:50
-            %p.chat-message__body test
+        .chat-message__header.clearfix
+          %p.chat-message__name takashihojo
+          %p.chat-message__time 2018/03/02 15:11:50
+          %p.chat-message__body ナチュラルミネラルウォーター
       .chat-footer
         .chat-footer__body
-          %textarea{row: "1", placeholder: "type a message", name: "message[body]", id: "message_body"}
-          %label.chat-footer__file
+        =form_for [@group, @message] do |f|
+          = f.text_area :body, placeholder: 'type a message'
+          = f.label :image, class: 'chat-footer__file' do
             %i.fa.fa-image
-        %input{name: "commit", type: "submit", value: "Send"}
-
+          = f.submit :Send, class: "chat-group-form__action-btn"
