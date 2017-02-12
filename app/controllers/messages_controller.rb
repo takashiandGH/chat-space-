@@ -6,9 +6,6 @@ class MessagesController < ApplicationController
     @messages = @group.messages
   end
 
-  def new
-  end
-
   def create
     @message = current_user.messages.new(message_params)
       if @message.save
