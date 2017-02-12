@@ -6,9 +6,6 @@ class MessagesController < ApplicationController
     @messages = @group.messages
   end
 
-  # def new
-  # end
-
   def create
     @message = current_user.messages.new(message_params)
       if @message.save
@@ -16,7 +13,7 @@ class MessagesController < ApplicationController
       else
         flash[:alert] = "メッセージを送信できませんでした"
       end
-      # redirect_to group_messages_path
+      redirect_to group_messages_path
   end
 
 

@@ -19,6 +19,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.include ControllerMacros, :type => :controller
+  config.include Devise::TestHelpers, :type => :controller
 
   [:controller, :view, :request].each do |type|
    config.include ::Rails::Controller::Testing::TestProcess, :type => type
