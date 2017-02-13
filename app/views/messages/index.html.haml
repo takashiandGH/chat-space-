@@ -33,7 +33,7 @@
       .chat-footer
         .chat-footer__body
         =form_for [@group, @message] do |f|
-          = f.text_area :body, placeholder: 'type a message'
+          = f.text_area :body, class:'message_sent_form' placeholder: 'type a message'
           = f.label :image, class: 'chat-footer__file' do
             %i.fa.fa-image
           = f.submit :Send, class: "chat-group-form__action-btn"
