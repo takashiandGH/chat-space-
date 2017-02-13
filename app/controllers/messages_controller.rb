@@ -13,12 +13,12 @@ class MessagesController < ApplicationController
 
         respond_to do |format|
           format.html { redirect_to group_messages_path }
-          # format.json
-          # { render json:
-          #   { message:
-          #     { name: @message.user.name,
-          #       created_at: @message.created_at,
-          #       body: @message.body }}}
+          format.json
+          { render json:
+            { message:
+              { name: @message.user.name,
+                created_at: @message.created_at,
+                body: @message.body }}}
         end
 
       else
