@@ -12,8 +12,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     if @group.save
       flash[:notice] = "グループを作成しました"
-      redirect_to group_messages_path
-      # ここでエラー出るのは後で修正する
+      redirect_to group_messages_path(@group.id)
     else
       flash[:alert] = "グループ名を入力してください"
       redirect_to new_group_path
