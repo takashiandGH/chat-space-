@@ -6,29 +6,39 @@
 //   });
 // });
 
+
 $(function() {
-  function buildHTML(todo) {
-    var html = $('<li class="todo">').append(todo.content);
+  function buildHTML(message) {
+    var html =
+      // '<ul class="chat-message">' +
+      //   '<p class="chat-message__name">' +
+            message.user_name +
+            message.created_at +
+          // '</p>' +
+          // '<p class="chat-message__body">' +
+            message.body +
+          '</p>' +
+      '</ul>';
     return html;
   }
 
-  $('.js-form').on('submit', function(e) {
+  $('.chat-group-form__action-btn').on('submit', function(e) {
     e.preventDefault();
-    var textField = $('.js-form__text-field');
-    var todo = textField.val();
+    var textField = $('.message_sent_form');
+    var message = textField.val();
     $.ajax({
       type: 'POST',
-      url: '/todos.json',
+      url: url,
       data: {
-        todo: {
-          content: todo
+        message: {
+          body: message
         }
       },
       dataType: 'json'
     })
     .done(function(data) {
       var html = buildHTML(data);
-      $('.todos').append(html);
+      $('.chat-body').append(html);
       textField.val('');
     })
     .fail(function() {
