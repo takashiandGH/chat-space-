@@ -13,7 +13,6 @@ class MessagesController < ApplicationController
           format.html { redirect_to group_messages_path }
           format.json { render json: message.params_for_json }
          end
-
       else
         flash[:alert] = "メッセージを送信できませんでした"
       end
