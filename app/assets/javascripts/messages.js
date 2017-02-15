@@ -1,34 +1,24 @@
-// $(function() {
-//   $('.chat-group-form__action-btn').on('click', function(e) {
-//    e.preventDefault();
-//     message = $('.message_sent_form').val();
-//     console.log(message);
-//   });
-// });
-
 
 $(function() {
   function buildHTML(message) {
-    var html =
-      // '<ul class="chat-message">' +
-      //   '<p class="chat-message__name">' +
-            message.user_name +
-            message.created_at +
-          // '</p>' +
-          // '<p class="chat-message__body">' +
-            message.body +
-          '</p>' +
-      '</ul>';
+    var html = $(`<li class="chat-message">
+                    <div class="chat-message__header">
+                      <p class="chat-message__user"> ${message.name} </p>
+                      <p class="chat-message__time"> ${message.time} </p>
+                    </div>
+                    <p class="chat-message__body"> ${message.body} </p>
+                  </li>`);
     return html;
   }
 
-  $('.chat-group-form__action-btn').on('submit', function(e) {
+  $('.new-message').on('submit', function(e) {
     e.preventDefault();
     var textField = $('.message_sent_form');
     var message = textField.val();
+    var url = location.href + '.json'
     $.ajax({
       type: 'POST',
-      url: url,
+      url: './messages',
       data: {
         message: {
           body: message
@@ -39,10 +29,10 @@ $(function() {
     .done(function(data) {
       var html = buildHTML(data);
       $('.chat-body').append(html);
-      textField.val('');
+      $('.new-message')[0].reset();
     })
     .fail(function() {
-      alert('error');
+      alert('メッセージを入力してください');
     });
   });
 });
