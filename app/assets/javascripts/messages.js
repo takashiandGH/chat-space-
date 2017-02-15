@@ -13,9 +13,11 @@ $(function() {
 
   $('.new-message').on('submit', function(e) {
     e.preventDefault();
+
     var textField = $('.message_sent_form');
     var message = textField.val();
     var url = location.href + '.json'
+
     $.ajax({
       type: 'POST',
       url: './messages',
@@ -27,6 +29,7 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
+      // console.log(data);
       var html = buildHTML(data);
       $('.chat-body').append(html);
       $('.new-message')[0].reset();
