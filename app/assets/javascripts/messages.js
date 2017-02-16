@@ -22,11 +22,24 @@ $(function() {
       type: 'POST',
       url: './messages',
       data: {
-        message: {
-          body: message
+      message: {
+        body: message
         }
       },
       dataType: 'json'
+      success: function(data) {
+        if (data.is_success) {
+        var html = buildHTML(data);
+      $('.chat-body').append(html);
+      $('.new-message')[0].reset();
+
+      } else {
+        alert('メッセージを入力してください');
+        }
+      }
+    });
+
+    return false;
     })
     .done(function(data) {
       // console.log(data);
@@ -34,8 +47,9 @@ $(function() {
       $('.chat-body').append(html);
       $('.new-message')[0].reset();
     })
-    .fail(function() {
-      alert('メッセージを入力してください');
-    });
+    else {
+      alert('ページをリロードしてください');
+    };
+    return false
   });
 });
