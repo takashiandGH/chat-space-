@@ -30,7 +30,8 @@ $(function() {
     })
     .done(function(data) {
       var html = buildHTML(data);
-      $('.chat-messages').append(html);
+          // console.log(data);
+      $('.chat-body').append(html);
       $('.new-message')[0].reset();
     })
     .fail(function() {
