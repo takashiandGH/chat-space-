@@ -27,29 +27,15 @@ $(function() {
         }
       },
       dataType: 'json'
-      success: function(data) {
-        if (data.is_success) {
-        var html = buildHTML(data);
-      $('.chat-body').append(html);
-      $('.new-message')[0].reset();
-
-      } else {
-        alert('メッセージを入力してください');
-        }
-      }
-    });
-
-    return false;
     })
     .done(function(data) {
-      // console.log(data);
       var html = buildHTML(data);
-      $('.chat-body').append(html);
+      $('.chat-messages').append(html);
       $('.new-message')[0].reset();
     })
-    else {
+    .fail(function() {
       alert('ページをリロードしてください');
-    };
-    return false
+    });
+    return false;
   });
 });
