@@ -3,6 +3,7 @@
     %li.chat-group
       %a.chat-group__link
         %p.chat-group__name
-        = group.name
+        = link_to group_messages_path do
+          = group.name
         %p.chat-group__message
         = group.latest_message
