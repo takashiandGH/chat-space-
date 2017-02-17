@@ -12,3 +12,34 @@ $(function() {
       '</div>';
     return html;
   }
+
+//userを入力、送信
+  $('#user-search-field').on('keyup', function(e) {
+    e.preventDefault();
+
+    var textField = $('#user-search-field');
+    var user_name = textField.val();
+
+    $.ajax({
+      type: 'GET',
+      url: '/users/search.json',
+      data: user_name,
+      dataType: 'json'
+    })
+
+
+    .done(function(data) {
+      console.log(user_name);
+      $('#user-search-result').empty();
+      $.each(data,function(i, user){
+        var html = buildHTML(user);
+          $('#user-search-result').append(html);
+          });
+    })
+
+    .fail(function() {
+      alert('error');
+    });
+
+  });
+});
