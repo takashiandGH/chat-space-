@@ -14,13 +14,14 @@
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       %label.chat-group-form__label
-      = f.label :user
+      = f.label :チャットメンバー, class: "chat-group-form__label"
     .chat-group-form__field--right
       #chat-group-users
         #chat-group-user-22.chat-group-user.clearfix
+          %input.group_user_ids{name: "group[user_ids][]", type: "hidden", value: "#{current_user.id}"}
           %p.chat-group-user__name
-            = f.collection_check_boxes(:user_ids, User.all, :id, :name) do |t|
-              = t.label { t.check_box + t.text }
+            / = f.collection_check_boxes(:user_ids, User.all, :id, :name) do |t|
+            /   = t.label { t.check_box + t.text }
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
