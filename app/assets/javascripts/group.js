@@ -2,13 +2,13 @@
 $(function() {
 
 //(view-A)受信したuserを表示する(追加ボタンのview)
-  function adduserHTML(name, id) {
+  function adduserHTML(userhash) {
     var html =
       '<div class="chat-group-user">' +
-        '<span name="' + id + '">' + name +
+        '<span name="' + userhash.h_id + '">' + userhash.h_name +
         '</span>' +
         '<a class="user-search-result__btn">追加</a>' +
-        '<input type="hidden" name="group[user_ids][]" value="' + id + '">'
+        '<input type="hidden" name="group[user_ids][]" value="' + userhash.h_id + '">'
       '</div>';
     return html;
   }
@@ -40,13 +40,11 @@ $(function() {
     })
 
     .done(function(data) {
-      // console.log(user_name);
       $('#user-search-result').empty();
       $.each(data,function(i, user){
-        var name = user.name
-        var id = user.id
+        var userhash = create_userhash(user.name, user.id)
 
-        var html = adduserHTML(name, id);
+        var html = adduserHTML(userhash);
           $('#user-search-result').append(html);
       });
     })
@@ -56,6 +54,13 @@ $(function() {
     });
 
   });
+
+// userのnameとidを格納するハッシュ
+  function create_userhash(a_name, a_id){
+    var a_hash = {h_name: a_name, h_id: a_id}
+    return a_hash
+  }
+
 
 // ②追加ボタンを押したユーザーのビューを差し替え、view-Bの呼び出し
   $('#user-search-result').on('click', '.user-search-result__btn' ,function() {
@@ -81,19 +86,5 @@ $(function() {
     var html = adduserHTML(name, id);
     $('#user-search-result').append(html);
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 });
