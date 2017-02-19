@@ -6,13 +6,15 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   box-sizing: border-box;
+  min-height: 480px;
 
   h1 {
     letter-spacing: 2px;
     font-size: 24px;
     text-align: center;
+    font-weight: bold;
   }
-
+}
   .chat-group-form__errors {
     margin: 30px 0;
     padding: 20px 40px;
@@ -42,17 +44,20 @@
   .chat-group-form__field {
     margin-top: 30px;
 
+
     .chat-group-form__field--left {
       float: left;
       width: 30%;
       padding-right: 20px;
       padding-left: 20px;
       box-sizing: border-box;
+  margin: 20px auto;
     }
 
     .chat-group-form__field--right {
       float: right;
       width: 70%;
+  margin: 20px auto;
     }
 
     .chat-group-form__label {
@@ -68,6 +73,8 @@
       line-height: 30px;
       padding: 10px 15px;
       box-sizing: border-box;
+      border: 1px solid #ddd;
+      background-color: #fff;
     }
   }
 
@@ -103,4 +110,4 @@
     background-color: #38aef0;
     border: 0;
   }
-}
+

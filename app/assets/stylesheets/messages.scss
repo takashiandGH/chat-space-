@@ -204,48 +204,49 @@ h2 {
   padding: 20px 40px;
   background-color: #ddd;
 
-  &__body {
-    float: left;
-    width: calc(100% - 115px);
+    &__body {
+      float: left;
+      width: calc(100% - 115px);
+      height: 50px;
+      position: relative;
+    }
+
+    &__file {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    width: 40px;
     height: 50px;
-    position: relative;
+    line-height: 50px;
+    text-align: center;
+    }
+
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+    color: $gray;
+    height: 20px;
+    padding: 15px 10px;
+    border: none;
+    resize: none;
+    display: block;
+    margin: auto 0;
   }
 
-  &__file {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: inline-block;
-  width: 40px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
+  input {
+    float: left;
+    display: inline-block;
+    width: 100px;
+    margin-left: 15px;
+    line-height: 50px;
+    color: $mainwhite;
+    background-color: #39aef0;
+    text-align: center;
+    border: none;
+    padding: 0;
   }
-}
-
-textarea {
-  width: 100%;
-  font-size: 16px;
-  color: $gray;
-  height: 20px;
-  padding: 15px 10px;
-  border: none;
-  resize: none;
-  display: block;
-  margin: auto 0;
-}
-
-input {
-  float: left;
-  display: inline-block;
-  width: 100px;
-  margin-left: 15px;
-  line-height: 50px;
-  color: $mainwhite;
-  background-color: #39aef0;
-  text-align: center;
-  border: none;
-  padding: 0;
 }
 
 .fa-image {
