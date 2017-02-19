@@ -1,29 +1,6 @@
 // インクリメンタルサーチfunction
 $(function() {
 
-//(view-A)受信したuserを表示する(追加ボタンのview)
-  function adduserHTML(userhash) {
-    var html =
-      '<div class="chat-group-user">' +
-        '<span name="' + userhash.h_id + '">' + userhash.h_name +
-        '</span>' +
-        '<a class="user-search-result__btn">追加</a>' +
-        '<input type="hidden" name="group[user_ids][]" value="' + userhash.h_id + '">'
-      '</div>';
-    return html;
-  }
-
-//(view-B)選択したuserを表示(削除ボタンのview)
-  function deleteuserHTML(name, id) {
-    var html =
-      '<div class="chat-group-user">' +
-        '<span name="' + id + '">' + name +
-        '</span>' +
-        '<a class="user-search-result-delete__btn">削除</a>' +
-      '</div>';
-    return html;
-  }
-
 
 //①userを入力、送信、view-Aの呼び出し
   $('#user-search-field').on('keyup', function(e) {
@@ -88,3 +65,27 @@ $(function() {
   });
 
 });
+
+//(view-A)受信したuserを表示する(追加ボタンのview)
+  function adduserHTML(userhash) {
+    var html =
+      '<div class="chat-group-user">' +
+        '<span name="' + userhash.h_id + '">' + userhash.h_name +
+        '</span>' +
+        '<a class="user-search-result__btn">追加</a>' +
+        '<input type="hidden" name="group[user_ids][]" value="' + userhash.h_id + '">'
+      '</div>';
+    return html;
+  }
+
+
+//(view-B)選択したuserを表示(削除ボタンのview)
+  function deleteuserHTML(name, id) {
+    var html =
+      '<div class="chat-group-user">' +
+        '<span name="' + id + '">' + name +
+        '</span>' +
+        '<a class="user-search-result-delete__btn">削除</a>' +
+      '</div>';
+    return html;
+  }
