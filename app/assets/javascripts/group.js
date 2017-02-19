@@ -43,7 +43,6 @@ $(function() {
       $('#user-search-result').empty();
       $.each(data,function(i, user){
         var userhash = create_userhash(user.name, user.id)
-
         var html = adduserHTML(userhash);
           $('#user-search-result').append(html);
       });
@@ -79,6 +78,7 @@ $(function() {
   $('#user-search-result').on('click', '.user-search-result-delete__btn' ,function() {
 
     var brother_ele = $(this).prev();
+
     var name = brother_ele.text();
     var id   = brother_ele.attr('name');
 
