@@ -18,7 +18,6 @@
       .chat-body
         %ul.chat-message
           %li.chat-message
-          / =@message.body
         = render @messages
         .chat-message__header.clearfix
           %p.chat-message__name takashihojo
@@ -30,9 +29,11 @@
           %p.chat-message__time 2018/03/02 15:11:50
           %p.chat-message__body ナチュラルミネラルウォーター
       .chat-footer
-        .chat-footer__body
-        =form_for [@group, @message], html: {class: "new-message"} do |f|
-          = f.text_area :body, class: 'message_sent_form', placeholder: 'type a message'
-          = f.label :image, class: 'chat-footer__file' do
-            %i.fa.fa-image
-          = f.submit :Send, class: "chat-group-form__action-btn"
+        = form_for [@group, @message] do |f|
+          .chat-footer__body
+            = f.text_area :body, placeholder: 'type a message'
+          .chat-footer__file
+            = f.label :image do
+              = f.file_field :image
+              %i.fa.fa-image
+          = f.submit 'Send'

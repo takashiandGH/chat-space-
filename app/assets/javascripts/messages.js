@@ -7,6 +7,7 @@ $(function() {
                       <p class="chat-message__time"> ${message.time} </p>
                     </div>
                     <p class="chat-message__body"> ${message.body} </p>
+                    <img src= ${message.image} >
                   </li>`);
     return html;
   }
