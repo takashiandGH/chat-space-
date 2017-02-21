@@ -1,5 +1,6 @@
 
 $(function() {
+  // messageを表示するhtml
   function buildHTML(message) {
     var html = $(`<li class="chat-message">
                     <div class="chat-message__header">
@@ -12,6 +13,7 @@ $(function() {
     return html;
   }
 
+// messageを非同期更新する
   $('.new-message').on('submit', function(e) {
     e.preventDefault();
 
@@ -29,15 +31,58 @@ $(function() {
       },
       dataType: 'json'
     })
+
     .done(function(data) {
       var html = buildHTML(data);
-          // console.log(data);
       $('.chat-body').append(html);
       $('.new-message')[0].reset();
     })
+
     .fail(function() {
       alert('ページをリロードしてください');
     });
     return false;
   });
+
+
+  // 自動更新functionを実装するぞ
+function update() {
+  count = count + 1;
+console.log(count);
+};
+
+  var timerId = 0;
+  var count = 0;
+
+$(function() {
+  update();
+  //関数update()を2000ミリ秒間隔で呼び出す
+timerId = setInterval(function(){
+  update();
+}, 1000);
+
+// var HogeTimer = setInterval(function(){alert("ほげもげタイマー起動！");},1000);
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
