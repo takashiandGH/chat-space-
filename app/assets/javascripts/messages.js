@@ -13,7 +13,7 @@ $(function() {
     return html;
   }
 
-// messageを非同期更新する
+  // messageを非同期更新する
   $('.new-message').on('submit', function(e) {
     e.preventDefault();
 
@@ -46,43 +46,25 @@ $(function() {
 
 
   // 自動更新functionを実装するぞ
-function update() {
-  count = count + 1;
-console.log(count);
-};
+  if(location.href.match(/messages/)){
 
-  var timerId = 0;
+    $(function() {
+    update();
+    timerId = setInterval(function(){
+    update();
+    }, relordSeconds );
+    })
+  }
+    var relordSeconds = 5000;
+
+    function update() {
+    count = count + 1;
+    console.log(count);
+     location.reload()
+    };
+
+  var timerId = null;
   var count = 0;
 
-$(function() {
-  update();
-  //関数update()を2000ミリ秒間隔で呼び出す
-timerId = setInterval(function(){
-  update();
-}, 1000);
 
-// var HogeTimer = setInterval(function(){alert("ほげもげタイマー起動！");},1000);
-
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-});
+})
