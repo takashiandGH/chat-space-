@@ -58,8 +58,6 @@ $(function() {
     var relordSeconds = 5000;
 
     function update() {
-    count = count + 1;
-    console.log(count);
      location.reload()
     };
 
