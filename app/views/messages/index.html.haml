@@ -20,14 +20,6 @@
           %li.chat-message
         = render @messages
         .chat-message__header.clearfix
-          %p.chat-message__name takashihojo
-          %p.chat-message__time 2006/03/02 06:11:28
-          %p.chat-message__body わっほい
-          %li.chat-message
-        .chat-message__header.clearfix
-          %p.chat-message__name takashihojo
-          %p.chat-message__time 2018/03/02 15:11:50
-          %p.chat-message__body ナチュラルミネラルウォーター
       .chat-footer
         =form_for [@group, @message], html: {class: "new-message"} do |f|
           .chat-footer__body
@@ -37,4 +29,3 @@
               = f.file_field :image
               %i.fa.fa-image
           = f.submit 'Send'
-          = console
