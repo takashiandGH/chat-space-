@@ -27,7 +27,7 @@ class GroupsController < ApplicationController
     group = Group.find(params[:id])
     if group.update(group_params)
       flash[:notice] = "グループ情報を更新しました"
-      redirect_to root_path
+      redirect_to group_messages_path(group)
     else
       flash[:alert] = "グループ名を入力してください"
       redirect_to edit_group_path
