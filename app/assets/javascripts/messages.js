@@ -42,7 +42,6 @@ $(function() {
 
   // 自動更新functionを実装するぞ
   function getMessage(){
-    console.log("getMessageよばれた！！");
 
      $.ajax({
       url: "./messages",
@@ -51,25 +50,21 @@ $(function() {
     })
       .done(
       function(data){
-          len = data.length;
+         var len = data.length;
           $('.chat-body').empty();
-            for (var i = 0; i < len; i++){
-              insertHTML(data[i]);
-            }
-            messageNum = len;
-            return messageNum;
+          $.each(data, function(num, data){
+           insertHTML(data);
+        });
       })
       .fail(
       function(data){
-        console.log("通信失敗");
+        alert('ページをリロードしてください');
       })
   }
 
   function autoReload(){
-      console.log("autoReload呼ばれた！！");
     getMessage();
   }
-
   setInterval(autoReload, 5000);
 
 });
