@@ -1,19 +1,17 @@
 
 $(function() {
-  // messageを表示するhtml
-  function buildHTML(message) {
-    var html = $(`<li class="chat-message">
-                    <div class="chat-message__header">
-                      <p class="chat-message__user"> ${message.name} </p>
+  function insertHTML(message) {
+    var html = $(`<ul class="chat-message">
+                      <p class="chat-message__name"> ${message.name} </p>
                       <p class="chat-message__time"> ${message.time} </p>
-                    </div>
                     <p class="chat-message__body"> ${message.body} </p>
-                    <img src= ${message.image} >
-                  </li>`);
-    return html;
+                  `);
+      $('.chat-body').append(html);
+      $('.new-message')[0].reset();
   }
 
-  // messageを非同期更新する
+
+// 非同期通信function
   $('.new-message').on('submit', function(e) {
     e.preventDefault();
 
@@ -31,13 +29,10 @@ $(function() {
       },
       dataType: 'json'
     })
-
     .done(function(data) {
-      var html = buildHTML(data);
-      $('.chat-body').append(html);
-      $('.new-message')[0].reset();
-    })
+      var html = insertHTML(data);
 
+    })
     .fail(function() {
       alert('ページをリロードしてください');
     });
@@ -46,23 +41,35 @@ $(function() {
 
 
   // 自動更新functionを実装するぞ
-  if(location.href.match(/messages/)){
+  function getMessage(){
+    console.log("getMessageよばれた！！");
 
-    $(function() {
-    update();
-    timerId = setInterval(function(){
-    update();
-    }, relordSeconds );
+     $.ajax({
+      url: "./messages",
+      type: 'GET',
+      dataType: 'json'
     })
+      .done(
+      function(data){
+          len = data.length;
+          $('.chat-body').empty();
+            for (var i = 0; i < len; i++){
+              insertHTML(data[i]);
+            }
+            messageNum = len;
+            return messageNum;
+      })
+      .fail(
+      function(data){
+        console.log("通信失敗");
+      })
   }
-    var relordSeconds = 5000;
 
-    function update() {
-     location.reload()
-    };
+  function autoReload(){
+      console.log("autoReload呼ばれた！！");
+    getMessage();
+  }
 
-  var timerId = null;
-  var count = 0;
+  setInterval(autoReload, 5000);
 
-
-})
+});
