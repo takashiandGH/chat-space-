@@ -30,7 +30,7 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
-      var html = insertHTML(data);
+      insertHTML(data);
 
     })
     .fail(function() {
@@ -50,7 +50,6 @@ $(function() {
     })
       .done(
       function(data){
-         var len = data.length;
           $('.chat-body').empty();
           $.each(data, function(num, data){
            insertHTML(data);
