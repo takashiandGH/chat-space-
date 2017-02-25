@@ -59,3 +59,7 @@ gem 'haml-rails'
 gem 'erb2haml'
 gem 'font-awesome-rails'
 gem 'carrierwave'
+
+group :production do
+  gem 'unicorn'
+end
