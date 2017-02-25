@@ -1,17 +1,17 @@
 
 $(function() {
-  function buildHTML(message) {
-    var html = $(`<li class="chat-message">
-                    <div class="chat-message__header">
-                      <p class="chat-message__user"> ${message.name} </p>
+  function insertHTML(message) {
+    var html = $(`<ul class="chat-message">
+                      <p class="chat-message__name"> ${message.name} </p>
                       <p class="chat-message__time"> ${message.time} </p>
-                    </div>
                     <p class="chat-message__body"> ${message.body} </p>
-                    <img src= ${message.image} >
-                  </li>`);
-    return html;
+                  `);
+      $('.chat-body').append(html);
+      $('.new-message')[0].reset();
   }
 
+
+// 非同期通信function
   $('.new-message').on('submit', function(e) {
     e.preventDefault();
 
@@ -30,14 +30,40 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
-      var html = buildHTML(data);
-          // console.log(data);
-      $('.chat-body').append(html);
-      $('.new-message')[0].reset();
+      insertHTML(data);
+
     })
     .fail(function() {
       alert('ページをリロードしてください');
     });
     return false;
   });
+
+
+  // 自動更新functionを実装するぞ
+  function getMessage(){
+
+     $.ajax({
+      url: "./messages",
+      type: 'GET',
+      dataType: 'json'
+    })
+      .done(
+      function(data){
+          $('.chat-body').empty();
+          $.each(data, function(num, data){
+           insertHTML(data);
+        });
+      })
+      .fail(
+      function(data){
+        alert('ページをリロードしてください');
+      })
+  }
+
+  function autoReload(){
+    getMessage();
+  }
+  setInterval(autoReload, 5000);
+
 });
